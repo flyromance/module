@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function A(age) {
+        this.age = age;
+    }
+
+    A.prototype = {
+        constructor: A,
+        name: 'fanlong',
+        sayHello: function () {
+            console.log('hello a');
+        }
+    };
+
+    A.sayAge = function () {
+        console.log('age a');
+    };
+
+    function B() {
+        A.apply(this, arguments);
+    }
+
+    //        B.prototype = new A(123);
+
+    function inherit(sub, parent) {
+        function fn() {
+        }
+
+        fn.prototype = parent.prototype;
+        sub.prototype = new fn();
+
+        for (var key in parent) {
+            console.log(key);
+            sub[key] = parent[key];
+        }
+    }
+    B.prototype.sayHello = function () {
+        console.log('hello b');
+    };
+
+
+    inherit(B, A);
+
+    //        console.log(B.prototype.__proto__ === A.prototype);
+
+    class C extends A {
+        constructor() {
+            super();
+            this.sayName = function () {
+                console.log(this.name);
+            }
+        }
+
+        sayHello() {
+            console.log('hello c');
+        }
+
+        static sayAge() {
+            console.log(1);
+        }
+
+    }
+
+</script>
+<script>
+    // localStorage
+    (function (global, doc) {
+        function n(e) {
+            return doc.getElementById(e)
+        }
+
+        function r() {
+            o("stc_nls", 1, 1)
+        }
+
+        function i(e, n) {
+            try {
+                var r = localStorage[l + e] || "";
+                return r.length < 100 && (o(n, 0), doc.documentElement.style.display = "none", location.reload(!0)), r
+            } catch (i) {
+            }
+            return ""
+        }
+
+        function s(e, t) {
+            try {
+                localStorage[l + e] = t;
+                t !== localStorage[l + e] && f();
+            } catch (n) {
+                f()
+            }
+        }
+
+        function o(e, n, r) {
+            if (!e) return;
+            r = r || 60;
+            n || (r = -1);
+            r = (new Date(+(new Date) + r * 864e5)).toGMTString();
+            doc.cookie = e + "=" + n + (r ? "; expires=" + r : "");
+        }
+
+        function u(e, t) {
+            var r = n(t) && n(t).innerHTML.trim();
+            s(e, r)
+        }
+
+        function a(e, n, r) {
+            var s = i(e, r), o = doc.createElement(n);
+            o.innerHTML = s, h.appendChild(o)
+        }
+
+        function f() {
+            try {
+                var e = /(?:;)?stc_[^=]*=[^;]*;?/g, n = doc.cookie.match(e) || [], r = n.length, i = 0;
+                for (; i < r; i++)o(n[i].split("=")[0], 0);
+                localStorage.clear()
+            } catch (s) {
+            }
+        }
+
+        var l = "LS",
+            c = function () {
+            },
+            h = doc.head || doc.getElementsByTagName("head")[0],
+            p = 0,
+            d = global[l] = {
+                html2ls: c,
+                ls2html: c,
+                setCookie: c
+            };
+
+        try {
+            localStorage._ ? p = 1 : (localStorage._ = 0, localStorage._ && (p = 1))
+        } catch (v) {
+        }
+
+        p ? (d.html2ls = u, d.ls2html = a, d.setCookie = o) : r();
+    })(this, document)
+</script>
+
+</body>
+</html>

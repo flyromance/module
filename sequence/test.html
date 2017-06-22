@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="test.js">
+
+    </script>
+</head>
+
+<body>
+    <div>123</div>
+    <script>
+
+    (function() {
+        var script = document.createElement('script');
+        script.async = true; // 默认就是true
+        script.src = 'config.js';
+        document.head.appendChild(script);
+        // document.head.removeChild(script); // 可以马上从DOM中删除刚插入的script元素，但是浏览器依然认为其存在，依然会去加载执行
+        
+    })();
+    </script>
+    <script>
+    (function() {
+        document.write('<script src="config3.js"><\/script>');
+    })();
+    </script>
+    <script type="text/javascript">
+    (function() {
+        var script = document.createElement('script');
+        //内联脚本
+        script.text = "window.config2={" +
+            "appName:'name'," +
+            "appId:'appId'" +
+            "};";
+        document.head.appendChild(script);
+        document.head.removeChild(script); //可以马上从DOM中删除刚插入的script元素，但是浏览器依然认为其存在，依然会去加载执行
+    })();
+    </script>
+    <script>
+    (function() {
+        console.log('1', window.config); // 因为config.js下载执行事件不可预知，所以结果不可预知
+        console.log('2', window.config2);
+        console.log('3', window.config3);
+    })();
+
+    //获取设置一定的超时或许可以：）
+    setTimeout(function() {
+        console.log(window.config);
+    }, 100);
+    </script>
+    <script>
+    console.log('end');
+    </script>
+</body>
+
+</html>

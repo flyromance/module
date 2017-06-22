@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom异步</title>
+</head>
+<body>
+<div id="d">默认文本</div>
+<script>
+
+    // 对dom的操作都是异步的！
+    document.getElementById('d').onclick = function(){
+        this.innerHTML = "往div里添加的新文本";//更改一个节点
+        document.body.appendChild(document.createElement("input"));//插入一个节点
+        for(var i = 0;i<10000000000;i++);
+    }
+</script>
+</body>
+</html>

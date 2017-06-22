@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="loader.js"></script>
+    <!--<script src="./module/a.js"></script>-->
+    <!--<script src="./module/b.js"></script>-->
+</head>
+<body>
+
+    <script>
+        alert(document.readyState); // loading
+        myLoader.register({
+            a: './module/a.js',
+            b: './module/b.js'
+        });
+
+        myLoader.use(['b'], function(a) {
+            alert(a);
+        });
+    </script>
+    <div id="div">dddd</div>
+</body>
+</html>

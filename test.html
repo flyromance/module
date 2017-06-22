@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="load-script.js"></script>
+</head>
+<body>
+    <div id="div">wrap</div>
+
+    <!--<div id="cont"><script type="text/javascript">document.write('<script>alert(1);<\/script>');</script></div>-->
+
+    <script>
+
+        // 这么插入是不会执行script代码的
+        var div = document.getElementById('div');
+        div.innerHTML = '<div>html</div><script>alert(1);<\/script>'; 
+
+        // 创建script标签，插入到dom中；内联innerHTML或者外联src
+        var newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.innerHTML = 'alert(1);';
+        cont.appendChild(newScript);
+
+        // eval方法
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>t1</title>
+    <script type="text/javascript" src="../module_load.js" data-baseurl="lib"></script>
+    <script type="text/javascript">
+
+        require.config({
+            baseUrl: '../lib',
+            paths: {
+                'm2': 'module/m2',
+                'c1': '../component/c1'
+            }
+        });
+
+        require(['a', 'b', 'module/m1', 'c1'], function (a, b) {
+            console.log('load all');
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

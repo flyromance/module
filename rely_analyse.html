@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var relies = {
+        a: {
+            deps: ['d'],
+            parents: [],
+        },
+        b: {
+            deps: ['f'],
+            parents: [],
+        },
+        c: {
+            deps: ['g', 'f'],
+            parents: [],
+        },
+        d: {
+            deps: ['p', 'e'],
+            parents: [],
+        },
+
+
+        e: {
+            deps: ['p', 'x'],
+            parents: [],
+        },
+        f: {
+            deps: ['p'],
+            parents: [],
+        },
+
+        // 无依赖模块
+        p: {
+            deps: [],
+            parents: [''],
+        },
+        g: {
+            deps: [],
+            parents: [],
+        },
+        x: {
+            deps: [],
+            parents: [],
+        },
+    }
+    
+    </script>
+</body>
+
+</html>

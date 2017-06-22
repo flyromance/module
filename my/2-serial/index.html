@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="loadscript.js"></script>
+</head>
+<body>
+    <button id="btn">button</button>
+
+
+    <script type="text/javascript">
+
+    var arr = ['http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js', '../module/your.js', '../module/my.js'];
+
+    // 可以解决问题，但是回调地狱不好，而且是串行的！！！
+    // loadScript(arr[0], function() {
+    //     loadScript(arr[1], function() {
+    //         loadScript(arr[2], function() {
+    //             console.log('complete');
+    //         })
+    //     })
+    // });
+
+    // 解决回调地狱模式
+    loadQueue(arr);
+
+    </script>
+</body>
+</html>
