@@ -1,0 +1,19 @@
+{
+  "name": "module_analyse",
+  "version": "1.0.0",
+  "description": "amd cmd",
+  "main": "load-script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyromance/module.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flyromance/module/issues"
+  },
+  "homepage": "https://github.com/flyromance/module#readme"
+}
