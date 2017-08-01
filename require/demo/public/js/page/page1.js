@@ -10,7 +10,7 @@
 //     console.log(b);
 // });
 
-require(['js/module/c', 'js/module/jsencrypt'], function (c, d, en) {
+require(['c', 'js/module/jsencrypt'], function (c, d, en) {
     console.log(en);
 });
 
