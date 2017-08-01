@@ -3,7 +3,7 @@
  */
 
 // 一个模块依赖另一个模块
-define(function (require) {
+define(['js/module/base/index'], function (require) {
     return {
         helloC: function () {
             console.log('this is c model');
