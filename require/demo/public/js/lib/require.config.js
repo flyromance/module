@@ -8,23 +8,21 @@ require.config({
     // require或者define的module_name再paths中时，用paths中的值，如果此值为相对路径就与baseUrl相结合，如果为绝对路径直接作为src
     paths: {
         a: 'a',
-        b: 'b',
+        b: 'js/module/b',
         c: 'js/module/c',
         d: 'd',
         jquery: 'js/lib/jquery'
     },
 
     // b.js中的写法就要用下面这种方式来调用~，新版本可以不用这个方法来申明！
-    shim: {
-        b: {
-            exports: 'b'
-        }
-    },
+    // shim: {
+    //     b: {
+    //         exports: 'b'
+    //     }
+    // },
 
     // 时间戳:  ?_=3123213123123
-    urlArgs: {
-        _: new Date().getTime()
-    }
+    urlArgs: '_=' + new Date().getTime()
 });
 
 console.log(3);

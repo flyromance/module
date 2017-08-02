@@ -9400,5 +9400,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 console.log(1);
-
+setTimeout(function () {
+	console.log('setTimeout', 1);
+}, 4);
 })( window );
