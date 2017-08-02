@@ -209,15 +209,15 @@ var requirejs, require, define;
                 shim: {},
                 config: {}
             },
-            registry = {},
+            registry = {}, // 正在加载中的模块，加载完成后，会被删掉
             //registry of just enabled modules, to speed
             //cycle breaking code when lots of modules
             //are registered, but not activated.
-            enabledRegistry = {},
+            enabledRegistry = {}, // 类似registry
             undefEvents = {},
             defQueue = [],
-            defined = {},
-            urlFetched = {},
+            defined = {}, // 用于存放：已经加载完的模块 {id: exports}
+            urlFetched = {}, // 表示url有没有被设为script的src：{ url: true }
             bundlesMap = {},
             requireCounter = 1,
             unnormalizedCounter = 1;
@@ -507,6 +507,7 @@ var requirejs, require, define;
             var id = depMap.id,
                 mod = getOwn(registry, id);
 
+            // 已经加载完成了，并且是'defined'事件，直接执行工厂函数
             if (hasProp(defined, id) &&
                     (!mod || mod.defineEmitComplete)) {
                 if (name === 'defined') {

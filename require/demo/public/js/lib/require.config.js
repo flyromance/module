@@ -19,6 +19,11 @@ require.config({
         b: {
             exports: 'b'
         }
+    },
+
+    // 时间戳:  ?_=3123213123123
+    urlArgs: {
+        _: new Date().getTime()
     }
 });
 
